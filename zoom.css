@@ -1,0 +1,351 @@
+* {
+    box-sizing: border-box;
+    user-select: none;
+    touch-action: none;
+  }
+  a {
+    -webkit-touch-callout: default;
+  }
+  .selectable,
+  .selectable * {
+    user-select: text;
+  }
+  body {
+    background: #000;
+    margin: 0;
+    padding: 0;
+    font: 400 10pt/1.6 Helvetica, Arial, sans-serif;
+    color: rgba(255,255,255,0.533);
+  }
+  h1 {
+    color: rgba(255,255,255,0.533);
+    font: 400 12pt/1.6 Helvetica, Arial, sans-serif;
+    font: 400 12pt/1.6 serif;
+    font-weight: normal;
+    margin: 0;
+    letter-spacing: 0.125em;
+  }
+  p {
+    margin: 1.2em 0;
+    transition: margin 0.2s;
+  }
+  h4 {
+    margin: 3em 0 3.7em;
+  }
+  a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    opacity: 0.75;
+    opacity: 1;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  .social {
+    opacity: 1;
+    margin: 0 0.4em;
+  }
+  .social:hover {
+    opacity: 1;
+  }
+  .social img {
+    transition: all 0.2s;
+    width: 24px;
+  }
+  .social:hover img {
+    transform: scale(1.35);
+  }
+  .zoomlinks a {
+    display: inline-block;
+    margin: 0 0.25em;
+  }
+  .privacy {
+    margin: 0;
+    font-weight: normal;
+    color: rgba(255,255,255,0.533);
+  }
+  a.insta:before {
+    opacity: 0.9;
+    content: '';
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+    background: no-repeat center bottom/100% auto url("ui/insta.png");
+  }
+  a.insta:hover:before {
+    opacity: 0.6;
+  }
+  #zc {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #000;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 1s linear;
+  }
+  .startloaded #zc {
+    opacity: 1;
+  }
+  #loadspinner {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+  }
+  #loadspinner:after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border-top: 4px solid #fff;
+    border-bottom: 4px solid #fff;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    animation: rotate 1.5s linear infinite;
+    opacity: 0.33;
+  }
+  .loading #loadspinner {
+    display: flex;
+  }
+  #credits .logo,
+  #loadbar {
+    position: relative;
+    height: 18px;
+    width: 0%;
+    background: rgba(255,255,255,0.533);
+  }
+  #preview {
+    position: fixed;
+    background: #000;
+    z-index: 11;
+    bottom: 40px;
+    left: 10px;
+    display: none;
+    pointer-events: none;
+  }
+  .dragging * {
+    cursor: grabbing !important;
+    cursor: -moz-grabbing !important;
+    cursor: -webkit-grabbing !important;
+  }
+  #speedcontrol {
+    width: 80%;
+    height: 45px;
+    margin: 0 auto;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+  }
+  #speedcontrol:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 40px;
+    bottom: 0;
+    opacity: 0.25;
+    pointer-events: none;
+    background: url("ui/speed.svg?2") center/100% 100% no-repeat;
+  }
+  #speedcontrol .handle {
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 45px;
+    width: 2px;
+    margin-left: -1px;
+    margin-bottom: 0;
+    opacity: 0.5;
+    background: #000;
+    background: #fff;
+  }
+  .dragging #speedcontrol .handle {
+    opacity: 0.75;
+  }
+  .icon.active {
+    opacity: 1;
+  }
+  .buttonrow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.6em 1.2em 0.8em;
+  }
+  #fullscreen {
+    display: inline-block;
+    height: 22px;
+    line-height: 22px;
+    cursor: pointer;
+  }
+  #fullscreen:hover {
+    color: #fff;
+  }
+  #fullscreen:hover:after {
+    opacity: 1;
+  }
+  #fullscreen:after {
+    content: '';
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    width: 22px;
+    height: 22px;
+    margin-left: 0.5em;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* background-image: url("ui/full.png"); */
+    opacity: 0.6;
+  }
+  .fxsettings {
+    margin: 1.6em 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .fxbutton {
+    padding: 0 0.8em;
+    opacity: 1;
+    height: 24px;
+    display: block;
+    cursor: pointer;
+    color: rgba(255,255,255,0.533);
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
+  }
+  .fxbutton.active {
+    background-color: rgba(255,255,255,0.25);
+    color: #fff;
+  }
+  #credits {
+    position: fixed;
+    left: 1em;
+    cursor: default;
+    top: auto;
+    bottom: 1em;
+    width: 300px;
+    max-width: 90vw;
+    max-height: 100%;
+    z-index: 100;
+    padding: 0.6em 0 0;
+    opacity: 0;
+    outline: solid 1px rgba(0,0,0,0.267);
+    transition: opacity 0.4s;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    background: rgba(0,0,0,0.533);
+    pointer-events: none;
+  }
+  .applink img {
+    width: 60%;
+  }
+  #credits::-webkit-scrollbar {
+    width: 2px;
+  }
+  #credits::-webkit-scrollbar-track {
+    box-shadow: none;
+    background: transparent;
+  }
+  #credits::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.5);
+    box-shadow: none;
+    outline: none;
+  }
+  .creditsvisible #credits {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .banners {
+    font-size: 0;
+  }
+  .banners a {
+    display: inline-block;
+    width: 33%;
+    margin-bottom: 0.4em;
+    font-size: 11pt;
+    font-weight: bold;
+    font-style: italic;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .banners a img {
+    width: 95%;
+  }
+  .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    opacity: 0.6;
+    background: url("./ui/close.png") no-repeat center/100%;
+    display: none;
+  }
+  @media (max-width: 800px) {
+    .keyboard {
+      display: none;
+    }
+    .buttons {
+      display: flex;
+      flex-flow: column;
+    }
+    .buttons1 {
+      order: 3;
+      display: block;
+      text-align: center;
+    }
+    .buttons1 {
+      margin-top: 1em;
+    }
+    #info {
+      padding: 0.2em;
+    }
+    .settings {
+      order: 2;
+      margin-bottom: 1em;
+      display: block;
+    }
+    .settings .button:first-child {
+      margin-left: 0;
+    }
+  }
+  @-moz-keyframes rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @-o-keyframes rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
