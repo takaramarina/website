@@ -531,35 +531,6 @@ var zoom = (function(){
 		$("#nofx").addClass('active');
 	}
 
-	$(".fxbutton").mousedown(function(e){
-		$(".fxbutton").removeClass('active');
-		$('body').removeClass('fxcolors fxgrey')
-		$(e.target).addClass('active');
-	});
-
-	$("#nofx").mousedown(function(e){
-		fx = false;
-		filterelements.css('-webkit-filter', 'none');
-		filterelements.css('-moz-filter', 'none');
-		filterelements.css('-ms-filter', 'none');
-		filterelements.css('-o-filter', 'none');
-		filterelements.css('filter', 'none');
-	});	
-	$("#colors").mousedown(function(e){
-		fx = 'colors';
-		$('body').addClass('fxcolors')
-		hue = Math.random()*360;
-	});	
-	$("#sw").mousedown(function(e){
-		fx = 'sw';
-		filterelements.css('-webkit-filter', 'grayscale(100%)');
-		filterelements.css('-moz-filter', 'grayscale(100%)');
-		filterelements.css('-ms-filter', 'grayscale(100%)');
-		filterelements.css('-o-filter', 'grayscale(100%)');
-		filterelements.css('filter', 'grayscale(100%)');
-		$('body').addClass('fxgrey')
-	});	
-
 	/** SPEED CONTROL **/
 
 	var speedcontrol = $('#speedcontrol');
