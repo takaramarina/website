@@ -34,7 +34,7 @@ var zoom = (function(){
 	var speed = 6;
 	var speedfactor = 1;
 	var portrait = false;
-	var visiblesteps = 3;
+	var visiblesteps = 2;
 	//
 	var imagesloaded = 0;
 	var startloaded = false;
